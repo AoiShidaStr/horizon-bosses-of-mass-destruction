@@ -1,0 +1,8 @@
+id = "bosses_of_mass_destruction"
+name = "Bosses of Mass Destruction"
+version = "0.1.0"
+description = "Four end-game bosses with learnable attack patterns: Obsidilith, Lich, Gauntlet and Void Blossom. A Horizon port of Barribob's and miyo6032's Bosses of Mass Destruction (LGPL-3.0-only)."
+authors = ["Barribob", "miyo6032", "Horizon port by the Saison 2 server"]
+api = "0.2"
+side = "both"
+capabilities = ["registries"]

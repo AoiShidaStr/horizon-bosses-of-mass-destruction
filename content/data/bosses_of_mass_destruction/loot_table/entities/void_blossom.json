@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:entity",
+  "random_sequence": "bosses_of_mass_destruction:entities/void_blossom",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "minecraft:amethyst_shard", "functions": [ { "function": "minecraft:set_count", "count": { "min": 8.0, "max": 20.0 } } ] }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "minecraft:ender_pearl", "functions": [ { "function": "minecraft:set_count", "count": { "min": 2.0, "max": 5.0 } } ] }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "minecraft:enchanted_golden_apple" }
+      ]
+    }
+  ]
+}
