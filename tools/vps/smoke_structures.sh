@@ -1,6 +1,6 @@
 #!/bin/bash
-# Load every boss shrine on an isolated flat dedicated server, check its altar
-# and chest, and roll the guaranteed offering. Never uses the live server.
+# Place each shrine template on an isolated flat server, check its altar and
+# chest, and roll the guaranteed offering. Natural starts are tested separately.
 set -euo pipefail
 
 S=/opt/build/bomd-smoke
@@ -63,23 +63,23 @@ grep -q 'Done (' "$LOG" || { cat "$LOG"; exit 1; }
 cmd() { printf '%s\n' "$1" >&3; sleep 1; }
 check() { cmd "execute if block $1 $2 $3 $4"; }
 specs=(
-  "lich|0|0|4|4|2|4|minecraft:wither_skeleton_skull"
-  "obsidilith|32|0|7|7|4|7|minecraft:ender_eye"
-  "gauntlet|64|0|5|5|2|5|minecraft:netherite_scrap"
-  "void_blossom|96|0|6|6|4|6|minecraft:spore_blossom"
+  "lich|0|0|0|4|4|2|4|minecraft:wither_skeleton_skull"
+  "obsidilith|32|0|0|7|7|4|7|minecraft:ender_eye"
+  "gauntlet|64|0|0|5|5|2|5|minecraft:netherite_scrap"
+  "void_blossom|96|0|-42|6|6|4|6|minecraft:spore_blossom"
 )
 
 for spec in "${specs[@]}"; do
-  IFS='|' read -r name ox oz ax az cx cz offering <<< "$spec"
+  IFS='|' read -r name ox oz y ax az cx cz offering <<< "$spec"
   structure=bosses_of_mass_destruction:${name}_shrine
   chest=bosses_of_mass_destruction:chests/${name}_shrine
   cmd "forceload add $ox $oz"
   sleep 2
-  cmd "place structure $structure $ox -60 $oz"
-  check "$((ox + ax))" -60 "$((oz + az))" minecraft:crying_obsidian
-  check "$((ox + cx))" -59 "$((oz + cz))" minecraft:chest
-  cmd "data get block $((ox + cx)) -59 $((oz + cz))"
-  cmd "loot spawn $((ox + 2)) -59 $((oz + 2)) loot $chest"
+  cmd "place structure $structure $ox $y $oz"
+  check "$((ox + ax))" "$y" "$((oz + az))" minecraft:crying_obsidian
+  check "$((ox + cx))" "$((y + 1))" "$((oz + cz))" minecraft:chest
+  cmd "data get block $((ox + cx)) $((y + 1)) $((oz + cz))"
+  cmd "loot spawn $((ox + 2)) $((y + 1)) $((oz + 2)) loot $chest"
   sleep 1
   cmd "execute if entity @e[type=minecraft:item,distance=..16,nbt={Item:{id:\"$offering\"}}]"
   cmd "kill @e[type=minecraft:item]"

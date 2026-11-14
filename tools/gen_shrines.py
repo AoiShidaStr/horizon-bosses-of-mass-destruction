@@ -258,6 +258,7 @@ def generate():
                 "element": {
                     "element_type": "minecraft:single_pool_element",
                     "location": f"bosses_of_mass_destruction:{name}_shrine/{name}_shrine",
+                    "processors": "minecraft:empty",
                     "projection": "rigid",
                 },
             }],

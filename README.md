@@ -205,6 +205,7 @@ tools/vps/smoke.sh   # the dedicated-server smoke test (needs prepared resources
 tools/vps/smoke_altar.sh  # the altar, with bots right-clicking it
 tools/vps/smoke_structures.sh  # the shrines, chests and guaranteed offerings
 tools/vps/smoke_locate.sh  # natural structure starts in their intended dimensions
+tools/vps/validate_worldgen.sh  # package checks and both shrine smoke tests
 ```
 
 After syncing the mod to the VPS, run the complete validation through its

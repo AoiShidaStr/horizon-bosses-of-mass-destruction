@@ -6,6 +6,7 @@
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "bosses_of_mass_destruction:obsidilith_shrine/obsidilith_shrine",
+        "processors": "minecraft:empty",
         "projection": "rigid"
       }
     }
