@@ -11,13 +11,13 @@
           "functions": [
             {
               "function": "minecraft:set_name",
-              "name": { "text": "Obsidilith's Heart", "italic": false }
+              "name": { "translate": "item.bosses_of_mass_destruction.obsidilith_trophy", "italic": false }
             },
             {
               "function": "minecraft:set_lore",
               "lore": [
-                { "text": "Still warm. It beats once when held.", "italic": true, "color": "gray" },
-                { "text": "Trophy of the Obsidilith", "italic": true, "color": "dark_purple" }
+                { "translate": "item.bosses_of_mass_destruction.obsidilith_trophy.lore", "italic": true, "color": "gray" },
+                { "translate": "item.bosses_of_mass_destruction.obsidilith_trophy.lore_trophy", "italic": true, "color": "dark_purple" }
               ]
             }
           ]

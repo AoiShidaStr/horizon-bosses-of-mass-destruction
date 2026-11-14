@@ -326,7 +326,7 @@ pub(crate) fn tick_boss(
         .unwrap_or_default();
     if changed || !fresh.is_empty() {
         let bar = NativeBossBar {
-            name: Text::literal(boss.title()),
+            name: Text::translate(boss.translation_key(), &[]),
             progress,
             color: color.into(),
             overlay: 0,
@@ -808,7 +808,10 @@ pub fn living_death(host: &mut dyn Host, event: &mut LivingDeathEvent<'_>) -> Fl
         "{boss:?} #{} died ({}), bar cleared for {cleared} players",
         event.entity, event.damage_type
     ));
-    host.broadcast(Text::literal(format!("{} falls.", boss.title())));
+    host.broadcast(Text::translate(
+        "message.bosses_of_mass_destruction.boss_falls",
+        &[Text::translate(boss.translation_key(), &[])],
+    ));
     Flow::Continue
 }
 
@@ -894,10 +897,6 @@ pub(crate) fn call_boss(host: &mut dyn Host, boss: Boss, altar: [i32; 3], caller
         f64::from(altar[1]) + 1.0,
         f64::from(altar[2]) + 0.5,
     ];
-    let say = |host: &mut dyn Host, line: String| {
-        trace(format_args!("altar at {altar:?}, {boss:?} for {}: {line}", caller.name));
-        let _ = host.tell(caller.uuid, Text::literal(line));
-    };
     // Room over the altar for the boss to stand up.
     for dy in 1..=2 {
         let above = host.block([altar[0], altar[1] + dy, altar[2]]);
@@ -905,7 +904,14 @@ pub(crate) fn call_boss(host: &mut dyn Host, boss: Boss, altar: [i32; 3], caller
             above.as_str(),
             "minecraft:air" | "minecraft:cave_air" | "minecraft:void_air"
         ) {
-            say(host, "The altar needs two free blocks above it.".to_owned());
+            trace(format_args!(
+                "altar at {altar:?}, {boss:?} for {}: not enough room",
+                caller.name
+            ));
+            let _ = host.tell(
+                caller.uuid,
+                Text::translate("message.bosses_of_mass_destruction.altar_needs_room", &[]),
+            );
             return Flow::Cancel;
         }
     }
@@ -922,12 +928,29 @@ pub(crate) fn call_boss(host: &mut dyn Host, boss: Boss, altar: [i32; 3], caller
             == Some(boss)
     });
     if awake {
-        say(host, format!("A {} is already awake nearby.", boss.title()));
+        trace(format_args!(
+            "altar at {altar:?}, {boss:?} for {}: same boss already awake",
+            caller.name
+        ));
+        let _ = host.tell(
+            caller.uuid,
+            Text::translate(
+                "message.bosses_of_mass_destruction.boss_already_awake",
+                &[Text::translate(boss.translation_key(), &[])],
+            ),
+        );
         return Flow::Cancel;
     }
     if !caller.creative && host.take_items(boss.offering(), 1) == 0 {
         // `take_items` only takes plain stacks: a renamed offering is refused.
-        say(host, "The altar only takes a plain, unnamed offering.".to_owned());
+        trace(format_args!(
+            "altar at {altar:?}, {boss:?} for {}: no plain offering",
+            caller.name
+        ));
+        let _ = host.tell(
+            caller.uuid,
+            Text::translate("message.bosses_of_mass_destruction.plain_offering_only", &[]),
+        );
         return Flow::Cancel;
     }
     match host.summon(&caller.dimension, boss.kind(), at, Compound::new()) {
@@ -935,11 +958,13 @@ pub(crate) fn call_boss(host: &mut dyn Host, boss: Boss, altar: [i32; 3], caller
             let soul = ParticleOptions::simple(ParticleType::SoulFireFlame);
             ring(host, &soul, at, 1.5, 24);
             let _ = host.play_sound("minecraft:entity.wither.spawn", at, 5, 1.0, 1.0);
-            host.broadcast(Text::literal(format!(
-                "{} woke the {}.",
-                caller.name,
-                boss.title()
-            )));
+            host.broadcast(Text::translate(
+                "message.bosses_of_mass_destruction.boss_awakened",
+                &[
+                    Text::literal(caller.name.clone()),
+                    Text::translate(boss.translation_key(), &[]),
+                ],
+            ));
             trace(format_args!(
                 "{boss:?} #{id} called on the altar at {altar:?} by {}",
                 caller.name
@@ -949,7 +974,14 @@ pub(crate) fn call_boss(host: &mut dyn Host, boss: Boss, altar: [i32; 3], caller
             if !caller.creative {
                 let _ = host.give_items(boss.offering(), 1);
             }
-            say(host, "The altar stays silent.".to_owned());
+            trace(format_args!(
+                "altar at {altar:?}, {boss:?} for {}: summon failed",
+                caller.name
+            ));
+            let _ = host.tell(
+                caller.uuid,
+                Text::translate("message.bosses_of_mass_destruction.altar_silent", &[]),
+            );
         }
     }
     Flow::Cancel

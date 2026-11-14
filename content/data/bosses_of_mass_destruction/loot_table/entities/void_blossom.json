@@ -11,13 +11,13 @@
           "functions": [
             {
               "function": "minecraft:set_name",
-              "name": { "text": "Void Bloom", "italic": false }
+              "name": { "translate": "item.bosses_of_mass_destruction.void_blossom_trophy", "italic": false }
             },
             {
               "function": "minecraft:set_lore",
               "lore": [
-                { "text": "It hums when the room is empty.", "italic": true, "color": "gray" },
-                { "text": "Trophy of the Void Blossom", "italic": true, "color": "dark_purple" }
+                { "translate": "item.bosses_of_mass_destruction.void_blossom_trophy.lore", "italic": true, "color": "gray" },
+                { "translate": "item.bosses_of_mass_destruction.void_blossom_trophy.lore_trophy", "italic": true, "color": "dark_purple" }
               ]
             }
           ]

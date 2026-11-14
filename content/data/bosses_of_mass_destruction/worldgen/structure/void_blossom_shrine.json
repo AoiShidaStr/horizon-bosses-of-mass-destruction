@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:jigsaw",
+  "biomes": "#bosses_of_mass_destruction:has_void_blossom_shrine",
+  "step": "underground_structures",
+  "spawn_overrides": {},
+  "terrain_adaptation": "beard_thin",
+  "start_pool": "bosses_of_mass_destruction:void_blossom_shrine",
+  "size": 1,
+  "start_height": {
+    "absolute": -42
+  },
+  "max_distance_from_center": 80
+}

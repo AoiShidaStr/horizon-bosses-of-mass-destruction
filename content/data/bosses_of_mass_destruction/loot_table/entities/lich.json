@@ -11,13 +11,13 @@
           "functions": [
             {
               "function": "minecraft:set_name",
-              "name": { "text": "Lich's Crown", "italic": false }
+              "name": { "translate": "item.bosses_of_mass_destruction.lich_trophy", "italic": false }
             },
             {
               "function": "minecraft:set_lore",
               "lore": [
-                { "text": "The crown outlives the wearer.", "italic": true, "color": "gray" },
-                { "text": "Trophy of the Lich", "italic": true, "color": "dark_purple" }
+                { "translate": "item.bosses_of_mass_destruction.lich_trophy.lore", "italic": true, "color": "gray" },
+                { "translate": "item.bosses_of_mass_destruction.lich_trophy.lore_trophy", "italic": true, "color": "dark_purple" }
               ]
             }
           ]

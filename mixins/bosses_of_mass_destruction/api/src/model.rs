@@ -10,9 +10,8 @@ use horizon_client::mod_api::{
     CubeListBuilder, LayerDefinition, MeshDefinition, PartPose,
 };
 
-/// The texture size the models declare. The boxes are large (a boss is several
-/// blocks tall), so their unwrapped faces need a 256x256 sheet; the 64x64
-/// placeholder PNGs are stretched over it, which only scales the texels.
+/// The texture size the models declare; `make_textures.py` draws native-size
+/// pixel art for the boxes' unwrapped faces on this sheet.
 const SHEET: i32 = 256;
 
 /// A whole SHEETxSHEET texture, handed out box by box so boxes never overlap.

@@ -1,0 +1,13 @@
+{
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "bosses_of_mass_destruction:void_blossom_shrine/void_blossom_shrine",
+        "projection": "rigid"
+      }
+    }
+  ]
+}

@@ -53,6 +53,15 @@ impl Boss {
         }
     }
 
+    pub fn translation_key(self) -> &'static str {
+        match self {
+            Boss::Obsidilith => "bosses_of_mass_destruction.boss.obsidilith",
+            Boss::Lich => "bosses_of_mass_destruction.boss.lich",
+            Boss::Gauntlet => "bosses_of_mass_destruction.boss.gauntlet",
+            Boss::VoidBlossom => "bosses_of_mass_destruction.boss.void_blossom",
+        }
+    }
+
     pub fn from_kind(kind: &str) -> Option<Boss> {
         // Some hooks (`living_death` and the others fed by Horizon's
         // `game::native_hooks::mob_kind`, which puts `minecraft:` before every
@@ -76,9 +85,8 @@ impl Boss {
     /// The offering that calls this boss when a player uses it on an altar
     /// ([`ALTAR`]). This port's own way to start a fight without operator
     /// commands; the original mod's structures and spawners are not ported.
-    /// Each is a vanilla item a survival player can get, and the earlier
-    /// bosses' loot leads to the later offerings (the Obsidilith drops
-    /// netherite scrap, the Gauntlet's).
+    /// Each is vanilla and appears in its boss's generated shrine chest. The
+    /// Obsidilith also drops netherite scrap for the Gauntlet's offering.
     pub fn offering(self) -> &'static str {
         match self {
             Boss::Obsidilith => "minecraft:ender_eye",

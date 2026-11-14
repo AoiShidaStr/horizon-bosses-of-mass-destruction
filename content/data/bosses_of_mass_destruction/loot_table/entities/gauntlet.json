@@ -11,13 +11,13 @@
           "functions": [
             {
               "function": "minecraft:set_name",
-              "name": { "text": "Gauntlet's Fist", "italic": false }
+              "name": { "translate": "item.bosses_of_mass_destruction.gauntlet_trophy", "italic": false }
             },
             {
               "function": "minecraft:set_lore",
               "lore": [
-                { "text": "Dented on the inside.", "italic": true, "color": "gray" },
-                { "text": "Trophy of the Gauntlet", "italic": true, "color": "dark_purple" }
+                { "translate": "item.bosses_of_mass_destruction.gauntlet_trophy.lore", "italic": true, "color": "gray" },
+                { "translate": "item.bosses_of_mass_destruction.gauntlet_trophy.lore_trophy", "italic": true, "color": "dark_purple" }
               ]
             }
           ]
