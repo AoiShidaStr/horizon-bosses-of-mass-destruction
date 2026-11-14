@@ -207,6 +207,13 @@ tools/vps/smoke_structures.sh  # the shrines, chests and guaranteed offerings
 tools/vps/smoke_locate.sh  # natural structure starts in their intended dimensions
 ```
 
+After syncing the mod to the VPS, run the complete validation through its
+serialized build queue (do not invoke `validate.sh` directly):
+
+```
+/opt/build/queue.sh bomd-bosses /bin/bash /opt/build/mods/bosses_of_mass_destruction/tools/vps/validate.sh
+```
+
 `tools/check.sh` type-checks the crate against a local `horizon-ref`.
 
 Pins: Horizon `a85af177a82504f357ff10d5d40d0b7230e2ac32`, native hooks API
