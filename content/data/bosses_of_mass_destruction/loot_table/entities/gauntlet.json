@@ -5,6 +5,28 @@
     {
       "rolls": 1,
       "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:anvil",
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": { "text": "Gauntlet's Fist", "italic": false }
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                { "text": "Dented on the inside.", "italic": true, "color": "gray" },
+                { "text": "Trophy of the Gauntlet", "italic": true, "color": "dark_purple" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
         { "type": "minecraft:item", "name": "minecraft:diamond", "functions": [ { "function": "minecraft:set_count", "count": { "min": 6.0, "max": 12.0 } } ] }
       ]
     },

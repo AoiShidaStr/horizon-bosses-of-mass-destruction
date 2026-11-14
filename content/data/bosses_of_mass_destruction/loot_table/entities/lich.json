@@ -5,6 +5,28 @@
     {
       "rolls": 1,
       "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:skeleton_skull",
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": { "text": "Lich's Crown", "italic": false }
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                { "text": "The crown outlives the wearer.", "italic": true, "color": "gray" },
+                { "text": "Trophy of the Lich", "italic": true, "color": "dark_purple" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
         { "type": "minecraft:item", "name": "minecraft:experience_bottle", "functions": [ { "function": "minecraft:set_count", "count": { "min": 8.0, "max": 16.0 } } ] }
       ]
     },

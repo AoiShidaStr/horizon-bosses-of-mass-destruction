@@ -5,6 +5,28 @@
     {
       "rolls": 1,
       "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:crying_obsidian",
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": { "text": "Obsidilith's Heart", "italic": false }
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                { "text": "Still warm. It beats once when held.", "italic": true, "color": "gray" },
+                { "text": "Trophy of the Obsidilith", "italic": true, "color": "dark_purple" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
         { "type": "minecraft:item", "name": "minecraft:netherite_scrap", "functions": [ { "function": "minecraft:set_count", "count": { "min": 2.0, "max": 4.0 } } ] }
       ]
     },

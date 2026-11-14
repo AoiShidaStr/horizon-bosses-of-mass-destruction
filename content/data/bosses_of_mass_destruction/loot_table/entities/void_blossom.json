@@ -5,6 +5,28 @@
     {
       "rolls": 1,
       "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:amethyst_cluster",
+          "functions": [
+            {
+              "function": "minecraft:set_name",
+              "name": { "text": "Void Bloom", "italic": false }
+            },
+            {
+              "function": "minecraft:set_lore",
+              "lore": [
+                { "text": "It hums when the room is empty.", "italic": true, "color": "gray" },
+                { "text": "Trophy of the Void Blossom", "italic": true, "color": "dark_purple" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
         { "type": "minecraft:item", "name": "minecraft:amethyst_shard", "functions": [ { "function": "minecraft:set_count", "count": { "min": 8.0, "max": 20.0 } } ] }
       ]
     },

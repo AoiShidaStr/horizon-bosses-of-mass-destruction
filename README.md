@@ -120,6 +120,17 @@ Fixed by the smoke test:
 - A dead boss ticks through its death animation: it no longer starts a new
   cycle, shield or bar then.
 
+Loot:
+
+- Each boss drops its own **named trophy** next to the old stacks (`custom_name`
+  and `lore` through the loot table's `set_name` / `set_lore` functions, both
+  implemented by Horizon's loot engine): Obsidilith's Heart (crying obsidian),
+  Lich's Crown (skeleton skull), Gauntlet's Fist (anvil) and Void Bloom
+  (amethyst cluster). The trophies are plain vanilla items with a name, so they
+  are displayable and never break a recipe.
+- Client names are translated in `lang/fr_fr.json` (Liche, Gantelet, Floraison
+  du Vide); the English names stay in `lang/en_us.json`.
+
 Code:
 
 - Server half (`api/src/server.rs`): cycles with telegraph (particles, sound,
@@ -146,10 +157,14 @@ Code:
 ### Not done (known gaps)
 
 - Client visuals (models, poses, particles, boss bar look) are unverified:
-  a human needs to look on a real client.
-- No original structures (Lich tower, Obsidilith arena, Gauntlet cavern, Void
-  Blossom cave), no kill-count spawning, no eternal night: bosses come from
-  the altar or from `/summon`.
+  a human needs to look on a real client.- No original structures (Lich tower, Obsidilith arena, Gauntlet cavern, Void
+  Blossom cave), no kill-count spawning, no eternal night: bosses come from the
+  altar or from `/summon`. **This is the next gap to close** (boss shrines that
+  generate and hold the altar): the jigsaw + `.nbt` path exists in the engine
+  (`horizon-ref` structures, as the Graveyard port uses), but an NBT template
+  written by hand could not be worldgen-tested in this session.
+- The trophies are renamed vanilla items, not new registered items with their
+  own textures and uses.
 - No spawn eggs or custom summon items: Horizon's spawn eggs spawn the mob
   named by the egg item itself, so a data-only egg for a modded mob is not
   possible; the altar (vanilla items on crying obsidian) replaces it.
