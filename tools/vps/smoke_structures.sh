@@ -73,6 +73,8 @@ for spec in "${specs[@]}"; do
   IFS='|' read -r name ox oz ax az cx cz offering <<< "$spec"
   structure=bosses_of_mass_destruction:${name}_shrine
   chest=bosses_of_mass_destruction:chests/${name}_shrine
+  cmd "forceload add $ox $oz"
+  sleep 2
   cmd "place structure $structure $ox -60 $oz"
   check "$((ox + ax))" -60 "$((oz + az))" minecraft:crying_obsidian
   check "$((ox + cx))" -59 "$((oz + cz))" minecraft:chest
